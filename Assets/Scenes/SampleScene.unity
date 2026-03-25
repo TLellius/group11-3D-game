@@ -424,6 +424,57 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd73d169071bf0c4ba1c19ec6340eb8f, type: 3}
+--- !u!1 &96462786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 96462788}
+  - component: {fileID: 96462787}
+  m_Layer: 0
+  m_Name: WaterOrb (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &96462787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96462786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5c502f5cae541c69de00f46b5f0150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterOrb
+  waterAmount: 30
+  orbSize: 0.5
+  orbColor: {r: 0.2, g: 0.6, b: 1, a: 0.3}
+  floatHeight: 0.3
+  floatSpeed: 2
+  rotateSpeed: 60
+  particleColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
+--- !u!4 &96462788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96462786}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.29, y: 1, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180939680
 GameObject:
   m_ObjectHideFlags: 3
@@ -496,7 +547,7 @@ Transform:
   m_GameObject: {fileID: 180939680}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07912958, y: 0, z: 0, w: 0.9968644}
-  m_LocalPosition: {x: 0, y: -0.00000047683716, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -518,6 +569,7 @@ GameObject:
   - component: {fileID: 184757152}
   - component: {fileID: 184757151}
   - component: {fileID: 184757157}
+  - component: {fileID: 184757158}
   m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -538,13 +590,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   controller: {fileID: 184757152}
-  cam: {fileID: 1124538197}
-  turnSmoothTime: 0.1
+  cam: {fileID: 1857146685}
   speed: 5
-  jumpHeight: 3
+  jumpHeight: 4
   gravity: -9.81
+  turnSmoothTime: 0.1
   groundCheck: {fileID: 1290836970}
-  groundDistance: 0.4
+  groundDistance: 0.6
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -554,7 +606,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 0
-  isGrounded: 0
+  isGrounded: 1
   isOnAcid: 0
   contactEnemy: 0
   acidCooldown: 1
@@ -600,7 +652,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -613,7 +665,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184757150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -694,6 +746,26 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 1831479000}
+--- !u!114 &184757158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184757150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006d9389d709841acb9221def8d0316f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EvolutionManager
+  stages:
+  - {fileID: 11400000, guid: 5467b3b17809e488987a6bc8896afe38, type: 2}
+  - {fileID: 11400000, guid: ad0cf75db8a04423696f26c5dcf91c9f, type: 2}
+  - {fileID: 11400000, guid: 44a898b86cfb24693bd0d8ce09b5bb8a, type: 2}
+  visualRoot: {fileID: 184757156}
+  OnEvolved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &332914272
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1056,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 396910593}
-  - component: {fileID: 396910594}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1001,48 +1072,13 @@ Transform:
   m_GameObject: {fileID: 396910592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.87, y: 0.86785, z: -6.5}
+  m_LocalPosition: {x: 2.87, y: 0, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 184757156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &396910594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396910592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806109a119951264cae65fc4f2987aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  controller: {fileID: 184757152}
-  cam: {fileID: 0}
-  turnSmoothTime: 0.1
-  speed: 5
-  jumpHeight: 3
-  gravity: -9.81
-  groundCheck: {fileID: 1290836970}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  acidMask:
-    serializedVersion: 2
-    m_Bits: 0
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 0
-  isGrounded: 0
-  isOnAcid: 0
-  contactEnemy: 0
-  acidCooldown: 1
-  lastAcid: 0
-  knockbackDuration: 0.5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1278,7 @@ Transform:
   m_GameObject: {fileID: 415853625}
   serializedVersion: 2
   m_LocalRotation: {x: 0.097201124, y: 0, z: 0, w: 0.99526477}
-  m_LocalPosition: {x: 0, y: -0.00000047683716, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2596,7 +2632,7 @@ Transform:
   m_GameObject: {fileID: 1124538196}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09720117, y: -0.0000001207175, z: 0.00000001178971, w: 0.99526477}
-  m_LocalPosition: {x: 2.87, y: 4.86785, z: -23.5}
+  m_LocalPosition: {x: 2.87, y: 4, z: -23.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2778,7 +2814,7 @@ Transform:
   m_GameObject: {fileID: 1290836969}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3448,7 +3484,7 @@ Transform:
   m_GameObject: {fileID: 1650231590}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1152884, y: 0, z: 0, w: 0.9933321}
-  m_LocalPosition: {x: 0, y: -0.00000047683716, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4014,7 +4050,7 @@ Transform:
   m_GameObject: {fileID: 1857146683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.87, y: 4.86785, z: -23.5}
+  m_LocalPosition: {x: 2.87, y: 4, z: -23.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4554,6 +4590,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachinePipeline
+--- !u!1 &2039667505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039667507}
+  - component: {fileID: 2039667508}
+  m_Layer: 0
+  m_Name: WaterOrb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2039667507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039667505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2039667508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039667505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5c502f5cae541c69de00f46b5f0150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterOrb
+  waterAmount: 30
+  orbSize: 0.5
+  orbColor: {r: 0.2, g: 0.6, b: 1, a: 0.3}
+  floatHeight: 0.3
+  floatSpeed: 2
+  rotateSpeed: 60
+  particleColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
 --- !u!1 &2130587380
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,6 +4865,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1016383238}
   m_LocalEulerAnglesHint: {x: -6.379, y: 49.042, z: 5.508}
+--- !u!1 &2144175332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144175334}
+  - component: {fileID: 2144175333}
+  m_Layer: 0
+  m_Name: WaterOrb (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2144175333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144175332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5c502f5cae541c69de00f46b5f0150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterOrb
+  waterAmount: 30
+  orbSize: 0.5
+  orbColor: {r: 0.2, g: 0.6, b: 1, a: 0.3}
+  floatHeight: 0.3
+  floatSpeed: 2
+  rotateSpeed: 60
+  particleColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
+--- !u!4 &2144175334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144175332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4795,3 +4933,6 @@ SceneRoots:
   - {fileID: 1857146685}
   - {fileID: 684839100}
   - {fileID: 336489701}
+  - {fileID: 2039667507}
+  - {fileID: 96462788}
+  - {fileID: 2144175334}
