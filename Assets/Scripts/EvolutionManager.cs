@@ -44,6 +44,7 @@ public class EvolutionManager : MonoBehaviour
     public void AddWater(int amount)
     {
         WaterCollected += amount;
+        Debug.Log(WaterCollected);
         CheckEvolution();
     }
 

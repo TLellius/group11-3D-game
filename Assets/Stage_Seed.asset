@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EvolutionStage
   stageName: Stage_Seed
   stageIndex: 0
-  waterRequired: 0
+  waterRequired: 2
   maxHealth: 100
   moveSpeed: 5
   damage: 10
