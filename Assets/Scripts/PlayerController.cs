@@ -7,13 +7,14 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     
-    float turnSmoothVelocity;
-    public float turnSmoothTime = 0.1f;
     public float speed = 5.0f;
     //public float rotateSpeed = 100.0f;
     public float jumpHeight = 1f;
 
     public float gravity = -9.81f;
+
+    float turnSmoothVelocity;
+    public float turnSmoothTime = 0.1f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -58,17 +59,20 @@ public class PlayerController : MonoBehaviour
 
         if (knockbackTimer <= 0f)
         {
+            // reset downward velocity when grounded
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
 
+            // jump
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
             if (isOnAcid && Time.time - lastAcid >= acidCooldown)
             {
+                // acid damage
                 playerHealth.TakeDamage(10f);
                 velocity.y = Mathf.Sqrt(jumpHeight * -5f * gravity);
                 lastAcid = Time.time;
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // knockback
             velocity = knockbackVelocity;
             knockbackTimer -= Time.deltaTime;
             knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, Time.deltaTime * 5f);
@@ -98,6 +103,7 @@ public class PlayerController : MonoBehaviour
                 velocity -= knockbackVelocity;
             }
         }
+        // apply gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }

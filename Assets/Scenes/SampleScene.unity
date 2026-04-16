@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 184757152}
   - component: {fileID: 184757151}
   - component: {fileID: 184757157}
+  - component: {fileID: 184757158}
   m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -539,10 +540,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   controller: {fileID: 184757152}
   cam: {fileID: 1124538197}
-  turnSmoothTime: 0.1
   speed: 5
   jumpHeight: 3
   gravity: -9.81
+  turnSmoothTime: 0.1
   groundCheck: {fileID: 1290836970}
   groundDistance: 0.4
   groundMask:
@@ -698,6 +699,26 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 1831479000}
+--- !u!114 &184757158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184757150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006d9389d709841acb9221def8d0316f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EvolutionManager
+  stages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 44a898b86cfb24693bd0d8ce09b5bb8a, type: 2}
+  visualRoot: {fileID: 184757156}
+  OnEvolved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &253681203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,10 +1191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   controller: {fileID: 184757152}
   cam: {fileID: 0}
-  turnSmoothTime: 0.1
   speed: 5
   jumpHeight: 3
   gravity: -9.81
+  turnSmoothTime: 0.1
   groundCheck: {fileID: 1290836970}
   groundDistance: 0.4
   groundMask:
@@ -1738,6 +1759,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592851418}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &600738510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600738512}
+  - component: {fileID: 600738511}
+  m_Layer: 0
+  m_Name: WaterOrb (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &600738511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600738510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5c502f5cae541c69de00f46b5f0150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterOrb
+  waterAmount: 30
+  orbSize: 0.5
+  orbColor: {r: 0.2, g: 0.6, b: 1, a: 0.3}
+  floatHeight: 0.3
+  floatSpeed: 2
+  rotateSpeed: 60
+  particleColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
+--- !u!4 &600738512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600738510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.29, y: 1, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &614138684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,7 +3917,7 @@ GameObject:
   - component: {fileID: 1105969727}
   - component: {fileID: 1105969726}
   - component: {fileID: 1105969725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3976,7 +4048,7 @@ Transform:
   m_GameObject: {fileID: 1124538196}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09720117, y: -0.0000001207175, z: 0.00000001178971, w: 0.99526477}
-  m_LocalPosition: {x: 2.87, y: 4.86785, z: -23.5}
+  m_LocalPosition: {x: 2.87, y: 4, z: -23.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4163,6 +4235,57 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 184757156}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1323248865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323248867}
+  - component: {fileID: 1323248866}
+  m_Layer: 0
+  m_Name: WaterOrb (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1323248866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323248865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5c502f5cae541c69de00f46b5f0150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterOrb
+  waterAmount: 30
+  orbSize: 0.5
+  orbColor: {r: 0.2, g: 0.6, b: 1, a: 0.3}
+  floatHeight: 0.3
+  floatSpeed: 2
+  rotateSpeed: 60
+  particleColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
+--- !u!4 &1323248867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323248865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1351271417
 GameObject:
@@ -7714,6 +7837,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061338933}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2079380392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079380394}
+  - component: {fileID: 2079380393}
+  m_Layer: 0
+  m_Name: WaterOrb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2079380393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079380392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5c502f5cae541c69de00f46b5f0150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterOrb
+  waterAmount: 1
+  orbSize: 0.5
+  orbColor: {r: 0.2, g: 0.6, b: 1, a: 0.3}
+  floatHeight: 0.3
+  floatSpeed: 2
+  rotateSpeed: 60
+  particleColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
+--- !u!4 &2079380394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079380392}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094442228
 GameObject:
   m_ObjectHideFlags: 0
@@ -8190,3 +8364,6 @@ SceneRoots:
   - {fileID: 831308882}
   - {fileID: 253681204}
   - {fileID: 1558596023}
+  - {fileID: 2079380394}
+  - {fileID: 600738512}
+  - {fileID: 1323248867}
