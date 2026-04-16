@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e107fe14930424c898c2b4df5aec87, type: 3}
   m_Name: Stage_Seed
   m_EditorClassIdentifier: Assembly-CSharp::EvolutionStage
-  stageName: Unnamed Stage
+  stageName: Stage_Seed
   stageIndex: 0
-  waterRequired: 0
+  waterRequired: 2
   maxHealth: 100
   moveSpeed: 5
   damage: 10
   abilityName: 
   abilityPrefab: {fileID: 0}
-  visualPrefab: {fileID: 0}
+  visualPrefab: {fileID: 1210038090024910259, guid: 2af4aface4affa44a8ae9f735f47ae8c, type: 3}

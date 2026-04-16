@@ -618,7 +618,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184757150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -712,8 +712,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvolutionManager
   stages:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 5467b3b17809e488987a6bc8896afe38, type: 2}
+  - {fileID: 11400000, guid: ad0cf75db8a04423696f26c5dcf91c9f, type: 2}
   - {fileID: 11400000, guid: 44a898b86cfb24693bd0d8ce09b5bb8a, type: 2}
   visualRoot: {fileID: 184757156}
   OnEvolved:
@@ -4048,7 +4048,7 @@ Transform:
   m_GameObject: {fileID: 1124538196}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09720117, y: -0.0000001207175, z: 0.00000001178971, w: 0.99526477}
-  m_LocalPosition: {x: 2.87, y: 4, z: -23.5}
+  m_LocalPosition: {x: 2.87, y: 4.86785, z: -23.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []

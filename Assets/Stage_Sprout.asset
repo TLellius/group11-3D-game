@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Stage_Sprout
   m_EditorClassIdentifier: Assembly-CSharp::EvolutionStage
   stageName: Unnamed Stage
-  stageIndex: 0
-  waterRequired: 0
-  maxHealth: 100
-  moveSpeed: 5
-  damage: 10
+  stageIndex: 1
+  waterRequired: 30
+  maxHealth: 150
+  moveSpeed: 10
+  damage: 20
   abilityName: 
   abilityPrefab: {fileID: 0}
-  visualPrefab: {fileID: 0}
+  visualPrefab: {fileID: 1033715401186158595, guid: f9258977fbb39f94e890501758fba51c, type: 3}
