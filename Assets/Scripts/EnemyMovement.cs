@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     public float lungeDistance = 2f;
     public float lungeSpeed = 10f;
     private bool isLunging = false;
-    public float lungeDuration = 0.2f;
+    public float lungeDuration = 4f;
     private float lungeTimer;
     private Vector3 targetDirection;
 
@@ -50,15 +50,28 @@ public class EnemyMovement : MonoBehaviour
         playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
-        if(!playerInSight && !playerInAttackRange) Patrol();
-        else if(playerInSight && !playerInAttackRange) Chase();
-        else if(playerInSight && playerInAttackRange) Attack();
+        if (!isLunging)
+        {
+            if(!playerInSight && !playerInAttackRange) Patrol();
+            else if(playerInSight && !playerInAttackRange) Chase();
+            else if(playerInSight && playerInAttackRange) 
+            {
+                Vector3 playerPos = player.transform.position;
+                playerPos.y = 0f;
+                transform.LookAt(playerPos);
+                Attack();
+            }
+        }
     }
 
     void FixedUpdate()
     {
+        targetDirection = player.position - transform.position;
+        targetDirection = targetDirection.normalized;
+        targetDirection.y = 0f;
         if (isLunging)
         {
+            //navMeshAgent.SetDestination(transform.position);
             rb.MovePosition(rb.position + targetDirection * lungeSpeed * Time.fixedDeltaTime);
 
             lungeTimer -= Time.fixedDeltaTime;
@@ -66,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
             if (lungeTimer <= 0f)
             {
                 isLunging = false;
-                rb.linearVelocity = Vector3.zero;
+                navMeshAgent.enabled = true;
             }
         }
     }
@@ -81,19 +94,23 @@ public class EnemyMovement : MonoBehaviour
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
         {
             animator.SetTrigger("Attack");
-            navMeshAgent.SetDestination(transform.position);
+            navMeshAgent.enabled = false;
+            //navMeshAgent.SetDestination(transform.position);
         }
     }
     
     void Lunge()
     {
-        targetDirection = (player.position - transform.position);
-        targetDirection.y = 0f;
-        targetDirection.Normalize();
+        //rb.rotation = Quaternion.LookRotation(targetDirection);
 
-        rb.rotation = Quaternion.LookRotation(targetDirection);
+        //Debug.Log(targetDirection);
+        //Debug.Log("Enemy: " + transform.position + " Player: " + player.position);
+        navMeshAgent.enabled = false;
 
-            rb.linearVelocity = Vector3.zero;
+        //rb.linearVelocity = Vector3.zero;
+        //rb.AddForce(targetDirection * lungeDistance, ForceMode.Impulse);
+        //transform.LookAt(player);
+        //navMeshAgent.SetDestination(player.transform.position);
 
         isLunging = true;
         lungeTimer = lungeDuration;
