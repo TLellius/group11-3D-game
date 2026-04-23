@@ -2998,7 +2998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &861426525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3054,6 +3054,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   player: {fileID: 184757156}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 0
+  sightRange: 0
+  attackRange: 0
+  rb: {fileID: 0}
+  lungeDistance: 2
+  lungeSpeed: 10
+  lungeDuration: 0.2
 --- !u!195 &861426528
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5019,6 +5032,8 @@ GameObject:
   - component: {fileID: 1463827356}
   - component: {fileID: 1463827359}
   - component: {fileID: 1463827360}
+  - component: {fileID: 1463827361}
+  - component: {fileID: 1463827362}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -5039,6 +5054,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   player: {fileID: 184757156}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  range: 15
+  sightRange: 8
+  attackRange: 4
+  rb: {fileID: 1463827362}
+  lungeDistance: 2
+  lungeSpeed: 10
+  lungeDuration: 0.2
 --- !u!195 &1463827357
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5119,6 +5147,55 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1, z: 2.4}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &1463827361
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463827355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a96ff394aa19efb4bbcd55446aefd7db, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3f84ca341c1b1844eb99afcd13998555, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &1463827362
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463827355}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &1466082210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5570,7 +5647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1577374362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5626,6 +5703,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   player: {fileID: 184757156}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 0
+  sightRange: 0
+  attackRange: 0
+  rb: {fileID: 0}
+  lungeDistance: 2
+  lungeSpeed: 10
+  lungeDuration: 0.2
 --- !u!195 &1577374365
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5960,7 +6050,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650231590}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1152884, y: 0, z: 0, w: 0.9933321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.00000047683716, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
