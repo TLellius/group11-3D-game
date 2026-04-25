@@ -5060,7 +5060,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  range: 15
+  range: 50
   sightRange: 8
   attackRange: 4
   rb: {fileID: 1463827362}
