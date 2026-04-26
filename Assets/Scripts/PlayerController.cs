@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController controller;
     public Transform cam;
+    public PlayerHealth playerHealth;
     
     public float speed = 5.0f;
     //public float rotateSpeed = 100.0f;
     public float jumpHeight = 1f;
 
-    public float gravity = -9.81f;
+    public float gravity = -9.81f *2;
 
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.1f;
@@ -30,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public bool contactEnemy;
     public float acidCooldown = 1f; //1 second
     public float lastAcid = 0f;
-    private PlayerHealth playerHealth;
 
     private Vector3 knockbackVelocity;
     public float knockbackDuration = 0.5f;
@@ -39,11 +39,12 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       playerHealth = GetComponent<PlayerHealth>();
-       if (playerHealth == null)
-       {
+        Cursor.lockState = CursorLockMode.Locked;
+        //playerHealth = GetComponent<PlayerHealth>();
+        if (playerHealth == null)
+        {
             Debug.LogError("PlayerHealth not found on this GameObject!"); 
-       }
+        }
     }
 
     // Update is called once per frame
@@ -119,7 +120,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Hit by enemy");
             ApplyKnockback(other.transform.position, 40f);
-
             playerHealth.TakeDamage(10f);
         }
     }

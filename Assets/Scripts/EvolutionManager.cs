@@ -19,15 +19,18 @@ public class EvolutionManager : MonoBehaviour
     public int CurrentStageIndex { get; private set; } = 0;
     public EvolutionStage CurrentStage => stages[CurrentStageIndex];
 
-    PlayerHealth _health;
+    public PlayerHealth _health;
     PlayerController _controller;
     GameObject _currentVisual;
     GameObject _currentAbility;
 
+    public GameObject baseForm;
+    public GameObject evolvedForm;
+
     void Awake()
     {
         // grab the other scripts on the player so we can update their values
-        _health = GetComponent<PlayerHealth>();
+        //_health = GetComponent<PlayerHealth>();
         _controller = GetComponent<PlayerController>();
 
         if (stages == null || stages.Length == 0)
@@ -36,8 +39,11 @@ public class EvolutionManager : MonoBehaviour
 
     void Start()
     {
+        baseForm.SetActive(true);
+        evolvedForm.SetActive(false);
+
         // apply the base stage right away so stats are set from the start
-        ApplyStage(stages[0]);
+        //ApplyStage(stages[0]);
     }
 
     // called by WaterOrb when the player touches a water pickup
@@ -46,6 +52,11 @@ public class EvolutionManager : MonoBehaviour
         WaterCollected += amount;
         Debug.Log(WaterCollected);
         CheckEvolution();
+    }
+
+    public void LowerWater(int amount)
+    {
+        WaterCollected -= amount;
     }
 
     void CheckEvolution()
@@ -73,25 +84,42 @@ public class EvolutionManager : MonoBehaviour
         OnEvolved?.Invoke(stage);
     }
 
-    void ApplyStage(EvolutionStage stage)
+    public void ApplyStage(EvolutionStage stage)
     {
         UpdateStats(stage);
         SwapVisual(stage);
         UnlockAbility(stage);
     }
 
+    public void ReverseStage(EvolutionStage stage)
+    {
+        CurrentStageIndex -= 1;
+
+        // When players take too much damage, they will go down an evolution stage
+        Debug.Log(WaterCollected);
+        float actualCurrentHealth = _health.currentHealth;
+        UpdateStats(stage);
+        UnlockAbility(stage);
+        reverseVisual();
+
+        _health.currentHealth = actualCurrentHealth;
+    }
+
     void UpdateStats(EvolutionStage stage)
     {
         if (_health != null)
         {
-            _health.maxHealth = stage.maxHealth;
-            _health.currentHealth = stage.maxHealth; // heal to full when evolving
-
+            _health.updateHealth(stage.maxHealth);
+            /*
             if (_health.healthSlider != null)
             {
                 _health.healthSlider.maxValue = stage.maxHealth;
                 _health.healthSlider.value = stage.maxHealth;
             }
+
+            _health.maxHealth = stage.maxHealth;
+            _health.currentHealth = _health.maxHealth; // heal to full when evolving
+            */
         }
 
         if (_controller != null)
@@ -104,6 +132,10 @@ public class EvolutionManager : MonoBehaviour
     {
         if (stage.visualPrefab == null) return;
 
+        baseForm.SetActive(false);
+        evolvedForm.SetActive(true);
+
+        /*
         // destroy the old model and spawn the new one
         if (_currentVisual != null)
             Destroy(_currentVisual);
@@ -112,6 +144,13 @@ public class EvolutionManager : MonoBehaviour
         _currentVisual = Instantiate(stage.visualPrefab, parent);
         _currentVisual.transform.localPosition = Vector3.zero;
         _currentVisual.transform.localRotation = Quaternion.identity;
+        */
+    }
+
+    void reverseVisual()
+    {
+        baseForm.SetActive(true);
+        evolvedForm.SetActive(false);
     }
 
     void UnlockAbility(EvolutionStage stage)
